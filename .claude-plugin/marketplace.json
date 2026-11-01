@@ -1,0 +1,18 @@
+{
+  "name": "escale-ia",
+  "owner": {
+    "name": "Escale IA",
+    "url": "https://www.escaleia.com"
+  },
+  "metadata": {
+    "description": "Skills gratuitas da Escale IA para o Claude Code."
+  },
+  "plugins": [
+    {
+      "name": "instagram-salvos",
+      "source": "./plugins/instagram-salvos",
+      "description": "Transforma os posts salvos do Instagram numa base que o Claude consulta: baixa, transcreve no seu computador, resume e indexa.",
+      "version": "1.0.0"
+    }
+  ]
+}
