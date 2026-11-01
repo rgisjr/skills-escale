@@ -34,7 +34,7 @@ Depois abra uma conversa nova, numa pasta de projeto, e peça:
 
 ## instagram-salvos
 
-1. Usa o login que já está no seu navegador (Firefox). **Nunca pede senha.**
+1. Usa o login que já está no seu navegador: no Chrome, exportado com a extensão Get cookies.txt LOCALLY (1 minuto); ou o Firefox, direto. **Nunca pede senha.**
 2. Mostra qual conta está logada e só baixa depois que você confirma.
 3. Baixa os salvos em lotes de até 50, com pausas, e para sozinho se o Instagram pedir para esperar.
 4. Transcreve os vídeos com Whisper **no seu computador**. Nada vai para servidor nenhum.
@@ -44,8 +44,8 @@ Depois é só perguntar:
 
 > o que eu salvei sobre ganchos de Reels?
 
-**Requisitos:** Windows, Mac ou Linux com Python 3.10 a 3.13 (o Claude instala se faltar) e o Firefox
-logado no Instagram. No Mac também dá para usar o Chrome ou o Safari.
+**Requisitos:** Windows, Mac ou Linux com Python 3.10 a 3.13 (o Claude instala se faltar) e o Chrome
+(ou Firefox) logado no Instagram. No Mac também dá para ler o Chrome ou o Safari direto.
 
 ## Segurança
 

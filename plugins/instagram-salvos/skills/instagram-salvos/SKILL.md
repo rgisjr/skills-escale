@@ -6,8 +6,9 @@ description: >
   Whisper no próprio computador, resume cada post com título, tags e gancho, e mantém um INDEX.md leve.
   Use SEMPRE que o usuário quiser baixar, exportar, transcrever ou indexar os posts salvos do Instagram
   ("puxa meus salvos", "baixa meus salvos", "atualiza meus salvos"), ou quando perguntar algo sobre o que
-  salvou ("o que eu salvei sobre X?", "tem algum salvo sobre Y?"). Para perguntas, vá direto para
-  "Buscar na base". Feita pela Escale IA (escaleia.com).
+  salvou ("o que eu salvei sobre X?", "tem algum salvo sobre Y?") ou pedir para CRIAR algo a partir dos
+  salvos (calendário de conteúdo, roteiro, viagem, estratégia de marketing, receitas). Para perguntas e
+  pedidos, vá direto para "Usar a base". Feita pela Escale IA (escaleia.com).
 ---
 
 # Instagram salvos → base de conhecimento
@@ -75,18 +76,27 @@ Peça permissão antes de instalar e diga o que é cada coisa.
 
 ## 3. Login (sem senha)
 
-O caminho que funciona em Windows e Mac é o **Firefox**: o Chrome e o Edge no Windows criptografam o
-login e não dá para reaproveitar.
+Quase todo mundo usa o **Chrome**, então esse é o caminho padrão. O Chrome no Windows não deixa outro
+programa ler o login dele, por isso a pessoa exporta o login com uma extensão (leva 1 minuto) e o
+arquivo fica só no computador dela.
 
-1. Peça: "abra o Firefox (janela normal, não anônima), entre em instagram.com e veja se a conta ativa é
-   a @CONTA". Sem Firefox: Windows `winget install Mozilla.Firefox`; Mac `brew install --cask firefox`
-   ou firefox.com.
-2. Rode `PY SKILL_DIR/scripts/salvos.py verificar`. Ele pergunta ao Instagram de quem é a sessão, sem
-   baixar nada.
-3. **Mostre a conta que apareceu e espere o "sim"** do usuário.
+Guie um passo por vez e espere a pessoa dizer que fez:
 
-No Mac, quem prefere Chrome ou Safari pode usar `--navegador chrome` ou `--navegador safari` antes do
-comando (precisa de `PY -m pip install browser_cookie3`; o Mac pede acesso ao Keychain: clicar em Permitir).
+1. "Abra o Chrome e entre no **instagram.com** com a conta @CONTA."
+2. "Instale a extensão **Get cookies.txt LOCALLY**: abra
+   https://chromewebstore.google.com/search/Get%20cookies.txt%20LOCALLY , escolha a que tem esse nome
+   exato e clique em **Usar no Chrome**." (Ela é de código aberto e não envia nada para a internet.)
+3. "Volte para a aba do Instagram, clique no ícone de quebra-cabeça 🧩 no canto de cima, depois em
+   **Get cookies.txt LOCALLY** e em **Export**." O arquivo `www.instagram.com_cookies.txt` vai para a
+   pasta Downloads. Explique: "esse arquivo é o seu login; não mande para ninguém".
+4. Rode `PY SKILL_DIR/scripts/salvos.py verificar`. O script acha sozinho o arquivo mais recente em
+   Downloads (ou na pasta do projeto), pergunta ao Instagram de quem é a sessão e não baixa nada.
+5. **Mostre a conta que apareceu e espere o "sim"** do usuário.
+
+Outros caminhos (só se a pessoa preferir): Firefox logado no Instagram funciona sem extensão
+(`--navegador firefox`). No Mac, Chrome/Safari direto com `--navegador chrome|safari` depois de
+`PY -m pip install browser_cookie3` (o Mac pede acesso ao Keychain: clicar em Permitir).
+O login expira de tempos em tempos: se o `verificar` reclamar da sessão, exporte o arquivo de novo.
 
 ## 4. Puxar e transcrever
 
@@ -121,20 +131,26 @@ Depois rode `PY SKILL_DIR/scripts/salvos.py indice`.
 Diga quantos posts entraram, quais tags apareceram e destaque 2–3 posts que valem a pena. Lembre que
 na próxima vez basta pedir "atualiza meus salvos".
 
-## Buscar na base
+## Usar a base
 
-Quando perguntarem "o que eu salvei sobre X?":
+Perguntas ("o que eu salvei sobre X?") e pedidos ("cria um calendário de conteúdo com o que eu salvei",
+"monta a minha viagem com os lugares que salvei", "monta a minha estratégia seguindo o @fulano"):
 
-1. Leia só o `instagram-salvos/INDEX.md`.
-2. Escolha as linhas cujo título ou tags combinam com a pergunta.
-3. Abra apenas esses `post.md` e responda citando o @ do autor e o link. Não leia todos os posts: o
-   índice existe para caber no contexto mesmo com centenas de salvos.
+1. Leia só o `instagram-salvos/INDEX.md` (os mais recentes estão no topo).
+2. Escolha as linhas cujo título, tags ou autor combinam com o pedido.
+3. Abra apenas esses `post.md` (legenda, transcrição e resumo). Não leia todos os posts: o índice existe
+   para caber no contexto mesmo com centenas de salvos.
+4. Responda ou crie o que foi pedido e **cite os posts usados** (@ do autor e link), para a pessoa ver
+   que veio dos salvos dela. Se pedirem "o que salvei essa semana", explique que o Instagram não informa
+   a data em que você salvou e use os mais recentes do índice.
+5. Base vazia ou sem nada sobre o assunto? Diga isso e ofereça puxar mais salvos.
 
 ## Problemas comuns
 
 | Sintoma | O que fazer |
 |---|---|
-| "Não achei o Instagram logado no Firefox" | Entrar em instagram.com no Firefox (janela normal) e rodar de novo. |
+| "Não achei o login do Instagram" | Refazer o passo 3 do Login: Chrome logado no instagram.com → extensão → Export. |
+| "o arquivo ... não tem o login do Instagram" | O Export foi feito em outra aba. Abrir instagram.com logado e exportar de novo. |
 | "o Instagram pediu para esperar" / HTTP 429 | Parar. Esperar 30–60 min. Não é bloqueio. |
 | "a sessão do navegador pode ter expirado" | Abrir instagram.com no navegador, confirmar que está logado, rodar `verificar` de novo. |
 | Instagram pede para confirmar que foi você | O usuário aprova no próprio app/navegador e depois roda `verificar`. |

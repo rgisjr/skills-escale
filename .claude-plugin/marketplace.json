@@ -12,7 +12,7 @@
       "name": "instagram-salvos",
       "source": "./plugins/instagram-salvos",
       "description": "Transforma os posts salvos do Instagram numa base que o Claude consulta: baixa, transcreve no seu computador, resume e indexa.",
-      "version": "1.0.0"
+      "version": "1.1.0"
     }
   ]
 }
