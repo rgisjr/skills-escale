@@ -1,5 +1,5 @@
 __pycache__/
 *.pyc
 .venv*/
-instagram-salvos/
+/instagram-salvos/
 .DS_Store

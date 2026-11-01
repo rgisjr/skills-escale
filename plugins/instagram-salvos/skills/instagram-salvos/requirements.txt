@@ -1,0 +1,4 @@
+requests>=2.31
+faster-whisper==1.2.1
+# av 19 quebra o faster-whisper 1.2.1 (erro ao abrir o áudio)
+av==18.1.0
